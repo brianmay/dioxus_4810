@@ -1,3 +1,4 @@
+use axum_macros::FromRequest;
 use dioxus::prelude::*;
 use dioxus_fullstack::FullstackContext;
 
@@ -10,7 +11,7 @@ fn main() {
 }
 
 /// A simple per-request context type
-#[derive(Clone, Debug)]
+#[derive(FromRequest, Clone, Debug)]
 struct AppContext {
     user_id: String,
 }
@@ -19,9 +20,12 @@ struct AppContext {
 async fn trigger_bug() -> Result<String, ServerFnError> {
     // Await the context extraction
     let ctx: AppContext = FullstackContext::extract().await?;
+    // tokio::spawn(async {
+    //     let ctx: AppContext = FullstackContext::extract().await.unwrap();
+    // });
 
-    Ok(format!("User: {}", ctx.user_id))
-    // Ok("test".to_string())
+    // Ok(format!("User: {}", ctx.user_id))
+    Ok("test".to_string())
 }
 
 #[component]

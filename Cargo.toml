@@ -7,8 +7,12 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+async-trait = "0.1.89"
+axum = "0.8.6"
+axum-macros = "0.5.0"
 dioxus = { version = "0.7.0-rc.2", features = [ "fullstack" ] }
 dioxus-fullstack = { version = "0.7.0-rc.2" }
+tokio = "1.48.0"
 wasm-bindgen = "0.2.100"
 wasm-bindgen-cli = "0.2.100"
 

@@ -3481,8 +3481,12 @@ dependencies = [
 name = "my_dioxus_app"
 version = "0.1.0"
 dependencies = [
+ "async-trait",
+ "axum",
+ "axum-macros",
  "dioxus",
  "dioxus-fullstack",
+ "tokio",
  "wasm-bindgen",
  "wasm-bindgen-cli",
 ]
