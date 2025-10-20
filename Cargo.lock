@@ -3486,7 +3486,7 @@ dependencies = [
  "axum-macros",
  "dioxus",
  "dioxus-fullstack",
- "tokio",
+ "getrandom 0.3.4",
  "wasm-bindgen",
  "wasm-bindgen-cli",
 ]

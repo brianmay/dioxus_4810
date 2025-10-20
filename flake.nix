@@ -28,7 +28,7 @@
           overlays = [ (import rust-overlay) ];
         };
         pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
-        wasm-bindgen-cli = pkgs-unstable.wasm-bindgen-cli_0_2_100;
+        wasm-bindgen-cli = pkgs-unstable.wasm-bindgen-cli_0_2_104;
 
         dioxus-cli = pkgs.callPackage ./nix/dioxus-cli.nix { };
 
@@ -64,7 +64,7 @@
               enterShell = ''
                 export PORT="${toString port}"
                 export BASE_URL="http://localhost:$PORT/"
-                export DIOXUS_PUBLIC_PATH="$PWD/target/dx/my_dioxus_app/debug/web/"
+                # export DIOXUS_PUBLIC_PATH="$PWD/target/dx/my_dioxus_app/debug/web/"
               '';
             }
           ];

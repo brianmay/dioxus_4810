@@ -1,6 +1,4 @@
-use axum_macros::FromRequest;
 use dioxus::prelude::*;
-use dioxus_fullstack::FullstackContext;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
@@ -10,7 +8,14 @@ fn main() {
     dioxus::launch(App);
 }
 
+#[cfg(feature = "server")]
+use dioxus_fullstack::FullstackContext;
+
+#[cfg(feature = "server")]
+use axum_macros::FromRequest;
+
 /// A simple per-request context type
+#[cfg(feature = "server")]
 #[derive(FromRequest, Clone, Debug)]
 struct AppContext {
     user_id: String,
@@ -19,9 +24,9 @@ struct AppContext {
 #[server]
 async fn trigger_bug() -> Result<String, ServerFnError> {
     // Await the context extraction
-    let ctx: AppContext = FullstackContext::extract().await?;
+    // let ctx: AppContext = FullstackContext::extract().await?;
     // tokio::spawn(async {
-    //     let ctx: AppContext = FullstackContext::extract().await.unwrap();
+    // let ctx: AppContext = FullstackContext::extract().await.unwrap();
     // });
 
     // Ok(format!("User: {}", ctx.user_id))
