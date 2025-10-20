@@ -61,10 +61,9 @@ pub fn Hero() -> Element {
         button {
             onclick: move |_| {
                 spawn(async move {
-                    if let Ok(msg) = trigger_bug().await {
-                        println!("Server fn OK: {msg}");
-                    } else {
-                        println!("Server fn panicked or failed");
+                    match trigger_bug().await {
+                        Ok(msg) => error!("Server fn OK: {msg}"),
+                        Err(err) => error!("Server failed: {err}")
                     }
                 });
             },
